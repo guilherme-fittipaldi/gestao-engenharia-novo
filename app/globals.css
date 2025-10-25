@@ -81,6 +81,7 @@
   .text-balance {
     text-wrap: balance;
   }
+
   .text-navy-800 {
     color: #0a2463;
   }
@@ -89,9 +90,16 @@
 @layer base {
   * {
     @apply border-border;
+    scroll-behavior: smooth;
   }
+
   body {
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-rgb));
+    scroll-behavior: smooth;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }

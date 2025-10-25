@@ -6,16 +6,71 @@ import {
   BiCheck,
   BiFile,
   BiLayer,
-  BiLogoFacebook,
   BiLogoInstagram,
   BiLogoLinkedin,
   BiLogoLinkedinSquare,
   BiLogoWhatsapp,
-  BiLogoYoutube,
   BiSearchAlt,
 } from "react-icons/bi";
+import { JSX } from "react";
 
 export default function Home() {
+  const services1 = [
+    {
+      icon: <BiCheck className="text-blue-800" size={36} />,
+      title: "Inspeção Predial",
+    },
+    {
+      icon: <BiFile className="text-blue-800" size={36} />,
+      title: (
+        <>
+          Laudo de Entrega e <br />
+          Recebimento de Obra
+        </>
+      ),
+    },
+    {
+      icon: <BiBuildingHouse className="text-blue-800" size={36} />,
+      title: "Avaliação Imobiliária",
+    },
+  ];
+
+  const services2 = [
+    {
+      icon: <BiSearchAlt className="text-blue-800" size={36} />,
+      title: "Perícia Judicial",
+    },
+    {
+      icon: <BiLayer className="text-blue-800" size={36} />,
+      title: "Patologia Construtiva",
+    },
+  ];
+
+  interface ServicesListProps {
+    items: {
+      icon: JSX.Element;
+      title: string | JSX.Element;
+    }[];
+    className?: string;
+  }
+
+  function ServicesList({ items, className = "" }: ServicesListProps) {
+    return (
+      <div className={`flex gap-8 w-3/4 flex-wrap justify-evenly ${className}`}>
+        {items.map((service, index) => (
+          <div key={index} className="flex flex-col items-center">
+            <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
+              {service.icon}
+            </div>
+            <h3 className="mb-2 text-xs font-semibold  text-center uppercase text-navy-800">
+              {service.title}
+            </h3>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col min-h-screen scroll-smooth">
       {/* Navigation */}
@@ -104,7 +159,9 @@ export default function Home() {
                 height={150}
                 className="mx-auto"
               />
-              <p className="mt-4 text-sm text-blue-800">Serviços</p>
+              <p className="mt-4 text-sm font-semibold text-blue-800">
+                Serviços
+              </p>
             </div>
           </div>
         </section>
@@ -112,11 +169,17 @@ export default function Home() {
         {/* What We Do Section */}
         <section className="py-16 bg-white">
           <div className="container px-4 mx-auto" id="aaaaa">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               O Que Fazemos
             </h2>
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-2xl leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
             <div className="max-w-[530px] mx-auto text-center">
-              <p className="text-sm leading-relaxed text-gray-700">
+              <p className="text-sm leading-relaxed font-medium text-blue-800">
                 Atuamos no mercado de construção civil, proporcionando aos
                 nossos clientes soluções em engenharia e arquitetura voltadas à
                 melhoria da construção, dos edifícios e imóveis de forma a
@@ -129,58 +192,18 @@ export default function Home() {
         {/* Our Services Section */}
         <section className="py-16 bg-gray-200" id="servicos">
           <div className="flex flex-col items-center container px-4 mx-auto">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               Nossos Serviços
             </h2>
-            <div className="flex gap-8 w-3/4 flex-wrap justify-evenly">
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
-                  <BiCheck className="text-blue-800" size={36} />
-                </div>
-                <h3 className="mb-2 text-xs font-medium text-center uppercase text-navy-800">
-                  Inspeção Predial
-                </h3>
-              </div>
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-2xl leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
+            <ServicesList items={services1} />
+            <ServicesList items={services2} className="mt-8" />
 
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
-                  <BiFile className="text-blue-800" size={36} />
-                </div>
-                <h3 className="mb-2 text-xs font-medium text-center uppercase text-navy-800">
-                  Laudo de Entrega e<br />
-                  Recebimento de Obra
-                </h3>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
-                  <BiBuildingHouse className="text-blue-800" size={36} />
-                </div>
-                <h3 className="mb-2 text-xs font-medium text-center uppercase text-navy-800">
-                  Avaliação Imobiliária
-                </h3>
-              </div>
-            </div>
-
-            <div className="flex gap-8 w-3/4 flex-wrap justify-evenly mt-8">
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
-                  <BiSearchAlt className="text-blue-800" size={36} />
-                </div>
-                <h3 className="mb-2 text-xs font-medium text-center uppercase text-navy-800">
-                  Perícia Judicial
-                </h3>
-              </div>
-
-              <div className="flex flex-col items-center">
-                <div className="flex items-center justify-center w-20 h-20 mb-4 bg-white rounded-full shadow-md">
-                  <BiLayer className="text-blue-800" size={36} />
-                </div>
-                <h3 className="mb-2 text-xs font-medium text-center uppercase text-navy-800">
-                  Patologia Construtiva
-                </h3>
-              </div>
-            </div>
             <div className="flex justify-center mt-10">
               <Link
                 href="https://api.whatsapp.com/send/?phone=5511913078121&text=Ol%C3%A1%20%F0%9F%91%8B%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais!"
@@ -195,12 +218,17 @@ export default function Home() {
         {/* Projects Section */}
         <section className="py-16 bg-white">
           <div className="container px-4 mx-auto">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               Trabalhos Realizados
             </h2>
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-2xl leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
             <p className="max-w-3xl mx-auto mb-10 text-sm text-center text-gray-700">
-              Conheça um pouco sobre nossos trabalhos realizados em nossos
-              projetos
+              Conheça um pouco sobre nossos trabalhos realizados em nossa galeria
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
@@ -228,11 +256,18 @@ export default function Home() {
         </section>
 
         {/* Team Section */}
-        <section className="py-16 bg-gray-200" id="#sobre-nos">
+        <section className="py-16 bg-gray-200" id="sobre-nos">
           <div className="container px-4 mx-auto">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               Conheça Nosso Time
             </h2>
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-[24px] leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
+
             <div className="flex flex-wrap justify-center gap-10">
               <div className="flex flex-col items-center">
                 <a
@@ -241,16 +276,20 @@ export default function Home() {
                   target="_blank">
                   <Image
                     src="/Luciana.png"
-                    alt="Luciana Reis"
+                    alt="Luciana Palermo"
                     width={128}
                     height={128}
                     className="object-cover w-full h-full"
                   />
                 </a>
-                <h3 className="text-sm font-semibold text-navy-800 flex text-center items-center gap-1">
-                  <BiLogoLinkedinSquare className="text-blue-800" />
-                  LUCIANA REIS
-                </h3>
+                <a
+                  href="https://br.linkedin.com/in/luciana-palermo-dos-reis-b9b36065"
+                  target="_blank">
+                  <h3 className="text-sm font-semibold text-navy-800 flex text-center items-center gap-1">
+                    <BiLogoLinkedinSquare className="text-blue-800" />
+                    LUCIANA PALERMO
+                  </h3>
+                </a>
               </div>
               <div className="flex flex-col items-center">
                 <a
@@ -265,10 +304,14 @@ export default function Home() {
                     className="object-cover w-full h-full"
                   />
                 </a>
-                <h3 className="text-sm font-semibold text-navy-800 flex text-center items-center gap-1">
-                  <BiLogoLinkedinSquare className="text-blue-800" />
-                  GIVALDO REIS
-                </h3>
+                <a
+                  href="https://br.linkedin.com/in/givaldo-reis"
+                  target="_blank">
+                  <h3 className="text-sm font-semibold text-navy-800 flex text-center items-center gap-1">
+                    <BiLogoLinkedinSquare className="text-blue-800" />
+                    GIVALDO REIS
+                  </h3>
+                </a>
               </div>
             </div>
             <div className="max-w-3xl mx-auto mt-10 text-sm text-center text-gray-700">
@@ -285,57 +328,71 @@ export default function Home() {
                 e de alta qualidade para nossos clientes.
               </p>
             </div>
-            <div className="flex justify-center mt-6">
+            {/* <div className="flex justify-center mt-6">
               <Link
                 href="/sobre-nos"
                 className="px-6 py-2 text-xs font-medium text-white uppercase bg-blue-800 rounded hover:bg-blue-700">
                 Saiba Mais
               </Link>
-            </div>
+            </div> */}
           </div>
         </section>
 
         {/* Clients Section */}
-        <section className="py-16 bg-white" id="#clientes">
+        <section className="py-16 bg-white" id="clientes">
           <div className="container px-4 mx-auto">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               Clientes Com Quem Trabalhamos
             </h2>
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-2xl leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <Image src="/itau.png" alt="Itaú" width={100} height={50} />
+              <Image src="/itau.png" alt="Itaú" width={60} height={50} />
               <Image
                 src="/banco-do-brasil.png"
                 alt="Banco do Brasil"
-                width={100}
+                width={220}
                 height={50}
               />
-              <Image src="/bndes.png" alt="BNDES" width={100} height={50} />
+              <Image src="/bndes.png" alt="BNDES" width={250} height={50} />
               <Image
                 src="/bradesco.png"
                 alt="Bradesco"
-                width={100}
+                width={250}
                 height={50}
               />
-              <Image src="/caixa.png" alt="Caixa" width={100} height={50} />
-              <Image src="/FHE.jpeg" alt="FHE" width={100} height={50} />
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-8 mt-8 md:mt-0">
+              <Image src="/caixa.png" alt="Caixa" width={250} height={50} />
+              <Image src="/FHE.jpeg" alt="FHE" width={250} height={50} />
               <Image
                 src="/santander.png"
                 alt="Santander"
-                width={100}
+                width={250}
                 height={50}
               />
-              <Image src="/TJSP.png" alt="Governo" width={100} height={50} />
+              <Image src="/TJSP.png" alt="Governo" width={120} height={50} />
             </div>
           </div>
         </section>
 
         {/* Contact Section */}
         <section className="py-16 bg-gray-200" id="contato">
-          <div className="container px-4 mx-auto max-w-5xl">
-            <h2 className="mb-12 text-2xl font-medium text-center uppercase text-navy-800">
+          <div className="container px-4 mx-auto max-w-5xl items-center content-center">
+            <h2 className="text-2xl font-semibold text-center uppercase text-navy-800">
               Contate-Nos
             </h2>
-            <div className="flex flex-col gap-8">
+            <p className="mb-12 relative text-center font-extrabold text-navy-800 text-2xl leading-4 select-none">
+              {"···"}
+              <span
+                className="absolute left-1/2 w-12 h-[1px] bg-blue-800"
+                style={{ transform: "translate(-50%, 8.7px)" }}></span>
+            </p>
+            <div className="flex flex-col gap-8 items-center content-center">
               <div className="flex flex-col gap-6">
                 <div className="flex items-start gap-4">
                   <MapPin className="flex-shrink-0 text-blue-800" />
@@ -350,8 +407,19 @@ export default function Home() {
                 <div className="flex items-center gap-4">
                   <Phone className="flex-shrink-0 text-blue-800" />
                   <div className=" flex flex-col gap-1">
-                    <p className="text-sm text-gray-700">(13) 99155 - 5054</p>
-                    <p className="text-sm text-gray-700">(13) 99773 - 9759</p>
+                    <Link
+                      href="https://api.whatsapp.com/send/?phone=5513991555054&text=Ol%C3%A1%20%F0%9F%91%8B%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais!"
+                      target="_blank"
+                      className="text-sm text-gray-700">
+                      (13) 99155-5054
+                    </Link>
+
+                    <Link
+                      href="https://api.whatsapp.com/send/?phone=5513997739759&text=Ol%C3%A1%20%F0%9F%91%8B%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais!"
+                      target="_blank"
+                      className="text-sm text-gray-700">
+                      (13) 99773-9759
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -368,13 +436,19 @@ export default function Home() {
               © 2025 Gestão Engenharia, todos os direitos reservados.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="#" aria-label="Instagram">
+              <Link
+                href="https://www.instagram.com/gestaoengenharia/"
+                target="_blank"
+                aria-label="Instagram">
                 <BiLogoInstagram
                   className="hover:text-cyan-600 text-blue-800"
                   size={20}
                 />
               </Link>
-              <Link href="#" aria-label="LinkedIn">
+              <Link
+                href="https://www.linkedin.com/company/gest%C3%A3oengenhariaoficial/"
+                target="_blank"
+                aria-label="LinkedIn">
                 <BiLogoLinkedin
                   className="hover:text-cyan-600 text-blue-800"
                   size={20}
@@ -382,6 +456,7 @@ export default function Home() {
               </Link>
               <Link
                 href="https://api.whatsapp.com/send/?phone=5511913078121&text=Ol%C3%A1%20%F0%9F%91%8B%2C%20vim%20pelo%20site%20e%20gostaria%20de%20saber%20mais!"
+                target="_blank"
                 aria-label="Whatsapp">
                 <BiLogoWhatsapp
                   className="hover:text-cyan-600 text-blue-800"

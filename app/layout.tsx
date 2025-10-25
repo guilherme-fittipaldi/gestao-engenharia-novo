@@ -1,15 +1,26 @@
 import type React from "react"
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { Montserrat } from "next/font/google"
 import type { Metadata } from "next"
 
-const inter = Inter({ subsets: ["latin"] })
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Gestão Engenharia",
   description: "Soluções em engenharia e arquitetura",
-    generator: 'v0.dev'
-}
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+};
 
 export default function RootLayout({
   children,
@@ -18,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+      <body className={montserrat.className}>{children}</body>
     </html>
   )
 }
