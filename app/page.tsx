@@ -275,7 +275,7 @@ export default function Home() {
                   href="https://br.linkedin.com/in/luciana-palermo-dos-reis-b9b36065"
                   target="_blank">
                   <Image
-                    src="/Luciana.png"
+                    src="/luciana.png"
                     alt="Luciana Palermo"
                     width={128}
                     height={128}
